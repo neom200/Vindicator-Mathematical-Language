@@ -21,6 +21,7 @@ function executeCommand(code=null, output=null, quantidade=0){
         resultados.innerText = '';
     }
 
+    quantidade = operador == 'print' ? 0 : quantidade;
     returnResult(resultados, res, quantidade);
 }
 
