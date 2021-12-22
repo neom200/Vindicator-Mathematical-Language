@@ -40,7 +40,8 @@
             For vectors, unary operations are applied element-wise, creating a new array off the result.<br>
             Binary Operations on vectors can receive 1 or 2 arguments. If 1 vector, it returns the applications of the operation on every pair of elements of that vector.
             Otherwise, returns a new vector by doing the operation on pairs of elements (if 2nd argument is scalar, it does the operation on every element of the vector with the scalar. Else, does the opearation on pairs of elements with same index from both vectors).<br>
-            Operations on vectors are the same as on numbers, but are identified with a '$' at the front.
+            Operations on vectors are the same as on numbers, but are identified with a '$' at the front.<br>
+            The last result that returned (even if it's an error) is stored in a special variable: the underscore ('_'). So, you can retrieve back if you need (like: if last result was 5, you can do "+ 10 _" to sum up 10 and 5).
         </p>
         -----------------------------------------
         <p>
