@@ -54,8 +54,9 @@
             let all_comands = editor.trim().split('\n')
             
             for(let i=0; i<all_comands.length; i+=1) {
-                executeCommand(all_comands[i], saida);
+                executeCommand(all_comands[i], saida, all_comands.length);
             }
+            clearQuantidade();
         }
 
         function clearOutput() {

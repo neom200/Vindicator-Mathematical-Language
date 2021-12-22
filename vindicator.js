@@ -5,7 +5,7 @@ var BINARY_OPERATIONS = ['+','-','*','/','%','log','pow','eq','dif','gt','lt','a
 var UNITARY_OPERATIONS = ['sqrt','abs','floor','ceil','exp','print','not']
 var DECLARATIONS = ['set','vec']
 
-function executeCommand(code=null, output=null){
+function executeCommand(code=null, output=null, quantidade=0){
     let comando = code==null ? document.getElementById("comando").value : code;
     let resultados = output==null ? document.getElementById("results") : output;
     // Comando esperado: Op Arg1 Arg2
@@ -21,12 +21,21 @@ function executeCommand(code=null, output=null){
         resultados.innerText = '';
     }
 
-    returnResult(resultados, res);
+    returnResult(resultados, res, quantidade);
 }
 
-function returnResult(resultados, resul){
-    resultados.innerText += `> ${resul}\n`;
+function returnResult(resultados, resul, quantidade){
+    if (quantidade > 0){
+        resultados.innerText += COMANDOS_QUANTIDADE == quantidade-1 ? `> ${resul}\n` : '';
+    }
+    else {
+        resultados.innerText += `> ${resul}\n`;
+    }
     COMANDOS_QUANTIDADE += 1;
+}
+
+function clearQuantidade() {
+    COMANDOS_QUANTIDADE = 0;
 }
 
 function get_number(arg){
