@@ -39,6 +39,9 @@ function get_number(arg){
     if (VARIAVEIS.get(arg) != undefined) {
         return VARIAVEIS.get(arg)
     }
+    if (arg.indexOf('/') != -1) {
+        return Number(arg.split('/')[0]) / Number(arg.split('/')[1])
+    }
 
     return Number(arg);
 }
