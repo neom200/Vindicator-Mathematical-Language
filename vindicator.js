@@ -99,12 +99,30 @@ function executeOperationOnArray (op, type, args) {
         return resul
     }
     else if (type == 'BINARY') {
-        let argumento = get_number(args[0])
-        let resul = 0
+        if (args.length == 2){
+            let argumento = get_number(args[0])
+            let argumento2 = get_number(args[1]);
 
-        for(let i=0; i<argumento.length; i+=1){ resul = doBinaryOperation(op, resul, argumento[i]) }
-
-        return resul
+            if (argumento.length != argumento2.length) {
+                if (typeof argumento2 == 'number') {
+                    let resul = []
+                    for(let i=0; i<argumento.length; i+=1){ resul.push(doBinaryOperation(op, argumento[i], argumento2)) }
+                    return resul
+                }
+                return 'ERROR: vectors must have the same length'
+            }
+            else {
+                let resul = []
+                for(let i=0; i<argumento.length; i+=1){ resul.push(doBinaryOperation(op, argumento2[i], argumento[i])) }
+                return resul
+            }
+        }
+        else {
+            let argumento = get_number(args[0])
+            let resul = 0;
+            for(let i=0; i<argumento.length; i+=1){ resul = doBinaryOperation(op, resul, argumento[i]) }
+            return resul
+        }
     }
 }
 
@@ -142,7 +160,7 @@ function evaluate(op, args, resultados){
             return aritmetica;
         }
         else if (BINARY_OPERATIONS.includes(op.slice(1))) {
-            aritmetica = executeOperationOnArray(op.slice(1), 'BINARY', args[0])
+            aritmetica = executeOperationOnArray(op.slice(1), 'BINARY', args)
             LAST_RESULT = aritmetica;
             return aritmetica;
         }

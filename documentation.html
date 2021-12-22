@@ -37,7 +37,9 @@
         <p>
             The Vindicator accepts two data type: Number and Vector. Those two don't operate together (yet).<br>
             Both can be operated on two different types of operations: Unary and Binary. Unary accepts only 1 argumento, Binary expects 2.<br>
-            For vectors, unary operations are applied element-wise, creating a new vector. While binary operations are executed on every pair of elements, from first to last, returning a single element as a result.<br>
+            For vectors, unary operations are applied element-wise, creating a new array off the result.<br>
+            Binary Operations on vectors can receive 1 or 2 arguments. If 1 vector, it returns the applications of the operation on every pair of elements of that vector.
+            Otherwise, returns a new vector by doing the operation on pairs of elements (if 2nd argument is scalar, it does the operation on every element of the vector with the scalar. Else, does the opearation on pairs of elements with same index from both vectors).<br>
             Operations on vectors are the same as on numbers, but are identified with a '$' at the front.
         </p>
         -----------------------------------------
@@ -50,7 +52,7 @@
         <p>
             # Vector Examples <br>
             1. Setting vector => vec nums 10 11 12 13 <br>
-            2. Binary Operation => $+ nums <br>
+            2. Binary Operation => $+ nums 1 <br>
             3. Unary Operation => $sqrt nums <br>
         </p>
         ------------------------------------------
