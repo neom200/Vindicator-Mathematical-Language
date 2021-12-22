@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vindicator Interpreter</title>
+
+    <style>
+        body {
+            background-color: antiquewhite;
+        }
+
+        #_main_ {
+            background-color: aquamarine;
+            border: 1px solid black;
+            width: 35%;
+            height: 100%;
+            font-size: larger;
+            margin-left: 30%;
+            margin-top: 5%;
+        }
+        #_main_ #codigo{
+            width: 95%;
+            height: 100%;
+            margin-left: 2%;
+            margin-top: 1%;
+            padding-bottom: 30%;
+        }
+
+        h1 {
+            margin-left: 27%;
+        }
+    </style>
+    <script src="vindicator.js"></script>
+</head>
+<body>
+    <a href="documentation.html">Documentação</a><br>
+    <a href="index.html">Interpreter</a>
+
+    <h1>Vindicator Mathematical Language</h1>
+    <div id="_main_">
+        <textarea id="codigo"></textarea>
+        <button onclick="executeAllComands()">Execute</button>
+        <button onclick="clearOutput()">Clear</button>
+
+        <p id="editor_saida"></p>
+    </div>
+
+    <script>
+        function executeAllComands() {
+            let editor = document.getElementById("codigo").value;
+            let saida = document.getElementById("editor_saida");
+            let all_comands = editor.trim().split('\n')
+            
+            for(let i=0; i<all_comands.length; i+=1) {
+                executeCommand(all_comands[i], saida);
+            }
+        }
+
+        function clearOutput() {
+            let saida = document.getElementById("editor_saida");
+            saida.innerText = '';
+        }
+    </script>
+</body>
+</html>

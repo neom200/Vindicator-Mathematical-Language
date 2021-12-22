@@ -5,9 +5,9 @@ var BINARY_OPERATIONS = ['+','-','*','/','%','log','pow','eq','dif','gt','lt','a
 var UNITARY_OPERATIONS = ['sqrt','abs','floor','ceil','exp','print','not']
 var DECLARATIONS = ['set','vec']
 
-function executeCommand(){
-    let comando = document.getElementById("comando").value;
-    let resultados = document.getElementById("results");
+function executeCommand(code=null, output=null){
+    let comando = code==null ? document.getElementById("comando").value : code;
+    let resultados = output==null ? document.getElementById("results") : output;
     // Comando esperado: Op Arg1 Arg2
     comando = comando.trim();
     comando = comando.split(' ');
@@ -81,20 +81,18 @@ function doUnirayOperation (op, argument) {
 
 function doDeclaration (op, name, args) {
     if (op == 'set') {
-        let nome_var = name
         let valores = args
 
-        VARIAVEIS.set(nome_var, get_number(valores));
+        VARIAVEIS.set(name, get_number(valores));
         return 1;
     }
 
     if (op == 'vec') {
-        let nome_var = name
         let valores = []
 
         for(let i=0; i<args.length; i+=1){ valores.push(get_number(args[i])) }
 
-        VARIAVEIS.set(nome_var, valores);
+        VARIAVEIS.set(name, valores);
         return 1;
     }
 }
@@ -136,7 +134,7 @@ function executeOperationOnArray (op, type, args) {
     }
 }
 
-// +, -, *, /, %, pow, log, set
+
 function evaluate(op, args, resultados){
     resultados.innerText += `[${COMANDOS_QUANTIDADE}] ${op}, ${args}:\n`
     //1 == True ; 0 == False
