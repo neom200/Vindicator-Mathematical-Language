@@ -1,8 +1,8 @@
 var COMANDOS_QUANTIDADE = 0;
 var LAST_RESULT = 0;
 var VARIAVEIS = new Map()
-var BINARY_OPERATIONS = ['+','-','*','/','%','log','pow']
-var UNITARY_OPERATIONS = ['sqrt','abs','floor','ceil','exp','print']
+var BINARY_OPERATIONS = ['+','-','*','/','%','log','pow','eq','dif','gt','lt','and','or']
+var UNITARY_OPERATIONS = ['sqrt','abs','floor','ceil','exp','print','not']
 var DECLARATIONS = ['set','vec']
 
 function executeCommand(){
@@ -17,7 +17,7 @@ function executeCommand(){
     
     let res = evaluate(operador, argumentos, resultados);
 
-    if (COMANDOS_QUANTIDADE > 10) {
+    if (COMANDOS_QUANTIDADE >= 10) {
         resultados.innerText = '';
     }
 
@@ -55,6 +55,12 @@ function doBinaryOperation (op, arg1, arg2) {
     else if(op=='%'){ aritmetica = arg1 % arg2}
     else if(op=='pow'){ aritmetica = Math.pow(arg1,arg2)}
     else if(op=='log'){ aritmetica = Math.log(arg2) / Math.log(arg1)}
+    else if(op == 'eq'){ aritmetica = arg1 == arg2 ? 1 : 0 }
+    else if(op == 'dif'){ aritmetica = arg1 != arg2 ? 1 : 0 }
+    else if(op == 'gt'){ aritmetica = arg1 > arg2 ? 1 : 0 }
+    else if(op == 'lt'){ aritmetica = arg1 < arg2 ? 1 : 0 }
+    else if(op == 'and'){ aritmetica = arg1 && arg2 ? 1 : 0 }
+    else if(op == 'or'){ aritmetica = arg1 || arg2 ? 1 : 0 }
 
     return aritmetica
 }
@@ -68,6 +74,7 @@ function doUnirayOperation (op, argument) {
     else if (op == 'floor'){ aritmetica = Math.floor(argument) }
     else if (op == 'exp'){ aritmetica = Math.exp(argument) }
     else if (op == 'print'){ aritmetica = argument }
+    else if (op == 'not'){ aritmetica = argument * -1 }
 
     return aritmetica
 }

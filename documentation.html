@@ -29,20 +29,21 @@
 
     <div id="documentation">
         <p>
-            The Vindicator is currently on version 0.1. New releases are undefined and uncertain.
+            The Vindicator is currently on version 0.2. New releases are undefined and uncertain.
         </p>
         <p>
-            The Vindicator Mathematical Language is a language design with prefix notation, meant to be used only for mathematical operations. It's not a programming language.
+            The Vindicator Mathematical Language is a language designed with prefix notation, meant to be used only for mathematical operations. It's not a programming language.
         </p>
         <p>
             The Vindicator accepts two data types: Number and Vector. Vectors are collections of numbers.<br>
-            Both can be operated on two different types of operations: Unary and Binary. Unary accepts only 1 argumento, Binary expects 2.<br>
+            Both can be operated on two different types of operations: Unary and Binary. Unary accepts only 1 argument, Binary expects 2.<br>
             For vectors, unary operations are applied element-wise, creating a new array off the result.<br>
-            Binary Operations on vectors can receive 1 or 2 arguments. If 1 vector, it returns the applications of the operation on every pair of elements of that vector.
+            Binary Operations on vectors can receive 1 or 2 arguments. If 1 argument (wich is a vector), it returns the application of the operation on every pair of elements of that vector.
             Otherwise, returns a new vector by doing the operation on pairs of elements (if 2nd argument is scalar, it does the operation on every element of the vector with the scalar. Else, does the opearation on pairs of elements with same index from both vectors).<br>
             Operations on vectors are the same as on numbers, but are identified with a '$' at the front.<br>
-            The last result that returned (even if it's an error) is stored in a special variable: the underscore ('_'). So, you can retrieve back if you need (like: if last result was 5, you can do "+ 10 _" to sum up 10 and 5).<br>
-            Vindicator supports integers (positive or negative), floating points, fractions and scientific notation (using 'e'). Examples: 5, -3, 1.2, 5/4, 2e4.
+            The last result that returned (even if it's an error) is stored in a special variable: the underscore ('_'). So, you can retrieve back if you need (example: if last result was 5, you can do "+ 10 _" to sum up 10 and 5).<br>
+            Vindicator supports integers (positive or negative), floating points, fractions and scientific notation (using 'e'). Examples: 5, -3, 1.2, 5/4, 2e4. <br>
+            There is no booleans or strings, "true" and "false" are 1 and 0 respectively.
         </p>
         -----------------------------------------
         <p>
@@ -60,8 +61,8 @@
         ------------------------------------------
         <p>
             >> Operations Available: <br>
-            [Unary]: sqrt, abs, ceil, floor, exp, print <br>
-            [Binary]: +, -, *, /, %, pow, log <br>
+            [Unary]: sqrt, abs, ceil, floor, exp, print, not <br>
+            [Binary]: +, -, *, /, %, pow, log, eq, gt, lt, and, or <br>
         </p>
     </div>
 </body>
