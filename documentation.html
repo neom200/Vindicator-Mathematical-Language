@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vindicator Interpreter</title>
+
+    <style>
+        body {
+            background-color: antiquewhite;
+            font-size: larger;
+        }
+
+        #documentation {
+            background-color: aquamarine;
+            border: 1px solid black;
+            width: 55%;
+            height: 100%;
+            font-size: large;
+            margin-left: 20%;
+            margin-top: 1%;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="index.html">Interpreter</a>
+
+    <div id="documentation">
+        <p>
+            The Vindicator is currently on version 0.1. New realeses are undefined and uncertain.
+        </p>
+        <p>
+            The Vindicator Mathematical Language is a language design with prefix notation, meant to be used only for mathematical operations. It's not a programming language.
+        </p>
+        <p>
+            The Vindicator accepts two data type: Number and Vector. Those two don't operate together (yet).<br>
+            Both can be operated on two different types of operations: Unary and Binary. Unary accepts only 1 argumento, Binary expects 2.<br>
+            For vectors, unary operations are applied element-wise, creating a new vector. While binary operations are executed on every pair of elements, from first to last, returning a single element as a result.<br>
+            Operations on vectors are the same as on numbers, but are identified with a '$' at the front.
+        </p>
+        -----------------------------------------
+        <p>
+            # Numerical Examples <br>
+            1. Unary Operation => sqrt 9 <br>
+            2. Binary Operation => + 1 2 <br>
+            3. Setting variable => set nice 69 <br>
+        </p>
+        <p>
+            # Vector Examples <br>
+            1. Setting vector => vec nums 10 11 12 13 <br>
+            2. Binary Operation => $+ nums <br>
+            3. Unary Operation => $sqrt nums <br>
+        </p>
+        ------------------------------------------
+        <p>
+            >> Operations Available: <br>
+            [Unary]: sqrt, abs, ceil, floor, exp, print <br>
+            [Binary]: +, -, *, /, %, pow, log <br>
+        </p>
+    </div>
+</body>
+</html>

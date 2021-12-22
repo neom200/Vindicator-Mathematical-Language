@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vindicator Interpreter</title>
+
+    <style>
+        body {
+            background-color: antiquewhite;
+        }
+
+        #_main_ {
+            background-color: aquamarine;
+            border: 1px solid black;
+            width: 35%;
+            height: 100%;
+            font-size: larger;
+            margin-left: 30%;
+            margin-top: 5%;
+        }
+        #_main_ input{
+            width: 50%;
+            height: 30%;
+            margin-left: 15%;
+            margin-top: 1%;
+        }
+
+        h1 {
+            margin-left: 27%;
+        }
+        
+    </style>
+</head>
+<body>
+    <a href="documentation.html">Documentação</a>
+
+    <h1>Vindicator Mathematical Language</h1>
+    <div id="_main_">
+        <input type="text" id="comando" placeholder="Vindicator:> ">
+        <button onclick="executeCommand()">Execute</button>
+
+        <p id="results"></p>
+    </div>
+
+    <script src="vindicator.js"></script>
+</body>
+</html>
