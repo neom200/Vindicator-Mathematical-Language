@@ -1,0 +1,47 @@
+Vindicator Mathematical Language
+The Vindicator is currently on version 0.3. New releases are unusual and uncertain.
+
+The Vindicator Mathematical Language is a language designed with prefix notation, meant to be used only for mathematical operations. It's not a programming language!
+
+The Vindicator accepts two data types: Number and Vector. Vectors are collections of numbers.
+Both can be operated on two different types of operations: Unary and Binary. Unary accepts only 1 argument, Binary expects 2.
+
+For vectors, unary operations are applied element-wise, creating a new array off the result.
+Binary Operations on vectors can receive 1 or 2 arguments. If 1 argument (wich must be a vector), it returns the application of the operation on every pair of elements of that vector. Otherwise, returns a new vector by doing the operation on pairs of elements (if 2nd argument is scalar, it does the operation on every element of the vector with the scalar. Else, does the operation on pairs of elements with same index from both vectors).
+Operations on vectors are the same as on numbers, but are identified with a '$' at the front.
+
+The last result that returned (even if it's an error) is stored in a special variable: the underscore ('_'). So, you can retrieve back if you need (example: if last result was 5, you can do "+ 10 _" to sum up 10 and 5).
+Vindicator supports integers (positive or negative), floating points, fractions and scientific notation (using 'e'). Examples: 5, -3, 1.2, 5/4, 2e4.
+There is no booleans or *strings, "true" and "false" are 1 and 0 respectively.
+
+*strings are accepted only by the "print" operator.
+
+----------------------------------------------------
+        << Operations Table >>
+[Operator, Type, Definition, SUsage Example]
+set - Declaration - Declara uma variável - "set x 3"
+vec - Declaration - Declara um vetor - "vec nums 1 2 3"
+expr - Declaration - Declara uma expressão - "expr sum4 : + 2 2"
+
+sqrt - Unary - Returns square root of number - "sqrt 9"
+abs - Unary - Returns absolute value of number - "abs -4"
+floor - Unary - Returns number rounded down - "floor 3.14"
+ceil - Unary - Returns number rounded up - "ceil 3.14"
+exp - Unary - Returns 'e' to the power of the number - "exp 24"
+print - Unary - Outputs the value - "print 69"
+not - Unary - Returns the number negated - "not -9"
+do - Unary - Executes an expression - "do sum4"
+
++ - Binary - Sums up two numbers - "+ 2 3"
+- - Binary - Subtracts two numbers - "- 9 8"
+* - Binary - Multiplies two numbers - "* 10 5"
+/ - Binary - Divides two numbers - "/ 6 3"
+% - Binary - Returns the remainder of division 1st/2nd - "% 15 3"
+log - Binary - Does the log of 2nd in base 1st - "log 100 10" 
+pow - Binary - Returns 1st to the power of 2nd - "pow 2 3"
+eq - Binary - Check if two numbers are equal - "eq 5 5"
+dif - Binary - Check if two numbers are different - "dif 5 5"
+gt - Binary - Check if 1st is bigger than 2nd - "gt 7 8"
+lt - Binary - Check if 1st is smaller than 2nd - "lt 7 8"
+and - Binary - Returns AND gate on arguments - "and 1 0"
+or - Binary - Returns OR gate on arguments - "or 1 0"

@@ -1,9 +1,10 @@
 var COMANDOS_QUANTIDADE = 0;
 var LAST_RESULT = 0;
 var VARIAVEIS = new Map()
+var EXPRESSIONS = new Map()
 var BINARY_OPERATIONS = ['+','-','*','/','%','log','pow','eq','dif','gt','lt','and','or']
-var UNITARY_OPERATIONS = ['sqrt','abs','floor','ceil','exp','print','not']
-var DECLARATIONS = ['set','vec']
+var UNITARY_OPERATIONS = ['sqrt','abs','floor','ceil','exp','print','not', 'do']
+var DECLARATIONS = ['set','vec','expr']
 
 function executeCommand(code=null, output=null, quantidade=0){
     let comando = code==null ? document.getElementById("comando").value : code;
@@ -78,7 +79,7 @@ function doBinaryOperation (op, arg1, arg2) {
     return aritmetica
 }
 
-function doUnitaryOperation (op, argument) {
+function doUnitaryOperation (op, argument, resultados) {
     let aritmetica = 0
 
     if (op == 'sqrt'){ aritmetica = Math.sqrt(argument) }
@@ -88,6 +89,10 @@ function doUnitaryOperation (op, argument) {
     else if (op == 'exp'){ aritmetica = Math.exp(argument) }
     else if (op == 'print'){ aritmetica = argument }
     else if (op == 'not'){ aritmetica = argument * -1 }
+    else if (op == 'do'){ 
+        expr = EXPRESSIONS.get(argument).split(' ')
+        aritmetica = evaluate(expr[0], expr.slice(1, expr.length), resultados); 
+    }
 
     return aritmetica
 }
@@ -99,13 +104,16 @@ function doDeclaration (op, name, args) {
         VARIAVEIS.set(name, get_number(valores));
         return 1;
     }
-
     if (op == 'vec') {
         let valores = []
 
         for(let i=0; i<args.length; i+=1){ valores.push(get_number(args[i])) }
 
         VARIAVEIS.set(name, valores);
+        return 1;
+    }
+    if (op == 'expr') {
+        EXPRESSIONS.set(name, args.join(' ').split(':')[1].trim())
         return 1;
     }
 }
@@ -173,9 +181,9 @@ function evaluate(op, args, resultados){
         return aritmetica;
     }
     else if (UNITARY_OPERATIONS.includes(op)) {
-        let argument = get_number(args[0])
+        let argument = op != 'do' ? get_number(args[0]) : args[0]
 
-        aritmetica = doUnitaryOperation(op, argument)
+        aritmetica = doUnitaryOperation(op, argument, resultados)
 
         LAST_RESULT = aritmetica;
         return aritmetica;
