@@ -52,6 +52,9 @@ function get_number(arg){
     if (arg.indexOf('/') != -1) {
         return Number(arg.split('/')[0]) / Number(arg.split('/')[1])
     }
+    if (arg.trim().startsWith('\"') && arg.trim().endsWith('\"')) {
+        return arg.trim().slice(1,-1);
+    }
 
     return Number(arg);
 }
@@ -75,7 +78,7 @@ function doBinaryOperation (op, arg1, arg2) {
     return aritmetica
 }
 
-function doUnirayOperation (op, argument) {
+function doUnitaryOperation (op, argument) {
     let aritmetica = 0
 
     if (op == 'sqrt'){ aritmetica = Math.sqrt(argument) }
@@ -112,7 +115,7 @@ function executeOperationOnArray (op, type, args) {
         let argumento = get_number(args[0])
         let resul = []
 
-        for(let i=0; i<argumento.length; i+=1){ resul.push(doUnirayOperation(op, argumento[i])) }
+        for(let i=0; i<argumento.length; i+=1){ resul.push(doUnitaryOperation(op, argumento[i])) }
 
         return resul
     }
@@ -142,6 +145,21 @@ function executeOperationOnArray (op, type, args) {
             return resul
         }
     }
+    else if (type == 'CONCATENATION') {
+        let argumento = get_number(args[0])
+        let argumento2 = get_number(args[1]);
+
+        if (typeof argumento2 == 'number') {
+            let resul = []
+            resul = argumento.concat([argumento2])
+            return resul
+        }
+        else {
+            let resul = []
+            resul = argumento.concat(argumento2)
+            return resul
+        }
+    }
 }
 
 
@@ -157,7 +175,7 @@ function evaluate(op, args, resultados){
     else if (UNITARY_OPERATIONS.includes(op)) {
         let argument = get_number(args[0])
 
-        aritmetica = doUnirayOperation(op, argument)
+        aritmetica = doUnitaryOperation(op, argument)
 
         LAST_RESULT = aritmetica;
         return aritmetica;
@@ -181,6 +199,11 @@ function evaluate(op, args, resultados){
             aritmetica = executeOperationOnArray(op.slice(1), 'BINARY', args)
             LAST_RESULT = aritmetica;
             return aritmetica;
+        }
+        else if (op.slice(1) == 'conc') {
+            aritmetica = executeOperationOnArray(op.slice(1), 'CONCATENATION', args);
+            LAST_RESULT = aritmetica
+            return aritmetica
         }
     }
 
