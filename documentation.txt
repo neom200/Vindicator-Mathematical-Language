@@ -18,10 +18,10 @@ There is no booleans or *strings, "true" and "false" are 1 and 0 respectively.
 
 ----------------------------------------------------
         << Operations Table >>
-[Operator, Type, Definition, SUsage Example]
-set - Declaration - Declara uma variável - "set x 3"
-vec - Declaration - Declara um vetor - "vec nums 1 2 3"
-expr - Declaration - Declara uma expressão - "expr sum4 : + 2 2"
+ [Operator, Type, Definition, Usage Example]
+set - Declaration - Declares a variable - "set x 3"
+vec - Declaration - Declares a vector - "vec nums 1 2 3"
+expr - Declaration - Declares an expression - "expr sum4 : + 2 2"
 
 sqrt - Unary - Returns square root of number - "sqrt 9"
 abs - Unary - Returns absolute value of number - "abs -4"

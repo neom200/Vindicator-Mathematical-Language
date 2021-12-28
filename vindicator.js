@@ -80,7 +80,7 @@ function doBinaryOperation (op, arg1, arg2) {
 }
 
 function doUnitaryOperation (op, argument, resultados) {
-    let aritmetica = 0
+    let aritmetica = 0;
 
     if (op == 'sqrt'){ aritmetica = Math.sqrt(argument) }
     else if (op == 'abs'){ aritmetica = Math.abs(argument) }
