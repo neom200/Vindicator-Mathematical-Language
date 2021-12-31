@@ -5,6 +5,7 @@ var EXPRESSIONS = new Map()
 var BINARY_OPERATIONS = ['+','-','*','/','%','log','pow','eq','dif','gt','lt','and','or']
 var UNITARY_OPERATIONS = ['sqrt','abs','floor','ceil','exp','print','not', 'do']
 var DECLARATIONS = ['set','vec','expr']
+var STATEMENTS = ['doif']
 
 function executeCommand(code=null, output=null, quantidade=0){
     let comando = code==null ? document.getElementById("comando").value : code;
@@ -118,6 +119,21 @@ function doDeclaration (op, name, args) {
     }
 }
 
+function doStatement(op, args, resultados) {
+    if (op == 'doif') {
+        checker = doUnitaryOperation('do', args[0], resultados);
+        if (checker == 1){
+            return doUnitaryOperation('do', args[1], resultados);
+        }
+        else if (checker == 0) {
+            return doUnitaryOperation('do', args[2], resultados);
+        }
+        else {
+            return 'ERROR: First expression must return boolean';
+        }
+    }
+}
+
 function executeOperationOnArray (op, type, args) {
     if (type == 'UNARY') {
         let argumento = get_number(args[0])
@@ -213,6 +229,11 @@ function evaluate(op, args, resultados){
             LAST_RESULT = aritmetica
             return aritmetica
         }
+    }
+    else if (STATEMENTS.includes(op)) {
+        aritmetica = doStatement(op, args, resultados);
+        LAST_RESULT = aritmetica;
+        return aritmetica;
     }
 
     return 'ERROR: Operation Undefined';
