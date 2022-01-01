@@ -45,17 +45,14 @@ function get_number(arg){
     if (arg == '_') {
         return LAST_RESULT;
     }
-    if (arg.indexOf('e') != -1) {
+    else if (arg.indexOf('e') != -1) {
         return Number(arg.split('e')[0]) * (Math.pow(10, Number(arg.split('e')[1])))
     }
-    if (VARIAVEIS.get(arg) != undefined) {
+    else if (VARIAVEIS.get(arg) != undefined) {
         return VARIAVEIS.get(arg)
     }
-    if (arg.indexOf('/') != -1) {
+    else if (arg.indexOf('/') != -1) {
         return Number(arg.split('/')[0]) / Number(arg.split('/')[1])
-    }
-    if (arg.trim().startsWith('\"') && arg.trim().endsWith('\"')) {
-        return arg.trim().slice(1,-1);
     }
 
     return Number(arg);
@@ -100,12 +97,10 @@ function doUnitaryOperation (op, argument, resultados) {
 
 function doDeclaration (op, name, args) {
     if (op == 'set') {
-        let valores = args
-
-        VARIAVEIS.set(name, get_number(valores));
+        VARIAVEIS.set(name, get_number(args));
         return 1;
     }
-    if (op == 'vec') {
+    else if (op == 'vec') {
         let valores = []
 
         for(let i=0; i<args.length; i+=1){ valores.push(get_number(args[i])) }
@@ -113,7 +108,7 @@ function doDeclaration (op, name, args) {
         VARIAVEIS.set(name, valores);
         return 1;
     }
-    if (op == 'expr') {
+    else if (op == 'expr') {
         EXPRESSIONS.set(name, args.join(' ').split(':')[1].trim())
         return 1;
     }
@@ -132,6 +127,8 @@ function doStatement(op, args, resultados) {
             return 'ERROR: First expression must return boolean';
         }
     }
+
+    return 'ERROR: This is weird...';
 }
 
 function executeOperationOnArray (op, type, args) {

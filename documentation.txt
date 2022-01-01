@@ -12,9 +12,7 @@ Operations on vectors are the same as on numbers, but are identified with a '$' 
 
 The last result that returned (even if it's an error) is stored in a special variable: the underscore ('_'). So, you can retrieve back if you need (example: if last result was 5, you can do "+ 10 _" to sum up 10 and 5).
 Vindicator supports integers (positive or negative), floating points, fractions and scientific notation (using 'e'). Examples: 5, -3, 1.2, 5/4, 2e4.
-There is no booleans or *strings, "true" and "false" are 1 and 0 respectively.
-
-*strings are accepted only by the "print" operator.
+There is no booleans or strings, "true" and "false" are 1 and 0 respectively.
 
 ----------------------------------------------------
         << Operations Table >>
