@@ -22,6 +22,7 @@ vec - Declaration - Declares a vector - "vec nums 1 2 3"
 expr - Declaration - Declares an expression - "expr sum4 : + 2 2"
 
 doif - Statement - Checks the 1st expression, executes the 2nd if true, the 3rd if false - "doif check sum4 sum3"
+doile - Statement - Executes all expressions in order *quant* times - "doile 4 expr1 expr2 expr3"
 
 sqrt - Unary - Returns square root of number - "sqrt 9"
 abs - Unary - Returns absolute value of number - "abs -4"

@@ -5,7 +5,7 @@ var EXPRESSIONS = new Map()
 var BINARY_OPERATIONS = ['+','-','*','/','%','log','pow','eq','dif','gt','lt','and','or']
 var UNITARY_OPERATIONS = ['sqrt','abs','floor','ceil','exp','print','not', 'do']
 var DECLARATIONS = ['set','vec','expr']
-var STATEMENTS = ['doif']
+var STATEMENTS = ['doif','doile']
 
 function executeCommand(code=null, output=null, quantidade=0){
     let comando = code==null ? document.getElementById("comando").value : code;
@@ -127,8 +127,15 @@ function doStatement(op, args, resultados) {
             return 'ERROR: First expression must return boolean';
         }
     }
-
-    return 'ERROR: This is weird...';
+    if (op == 'doile') {
+        let quantidade = get_number(args[0]);
+        let res = 0;
+        while (quantidade > 0) {
+            for (let i=1; i<args.length; i+=1){ res = doUnitaryOperation('do', args[i], resultados); }
+            quantidade -= 1;
+        }
+        return res;
+    }
 }
 
 function executeOperationOnArray (op, type, args) {
